@@ -45,7 +45,7 @@ const MAPBOX_STYLES: { id: MapboxStyle; label: string }[] = [
 
 const DEFAULT_MAPBOX_TOKEN =
   (typeof import.meta !== 'undefined' && import.meta.env?.VITE_MAPBOX_TOKEN) ||
-  'YOUR_MAPBOX_TOKEN_HERE';
+  '';
 
 export const MapboxHospitalMap: React.FC<MapboxHospitalMapProps> = ({
   hospitals,
@@ -74,12 +74,12 @@ export const MapboxHospitalMap: React.FC<MapboxHospitalMapProps> = ({
   // Active hospital prediction
   const activePrediction: WaitTimePredictionResult | null = activeHospital
     ? PredictionEngine.predictWaitTime({
-        queueCount: activeHospital.currentQueueCount,
-        activeDoctors: activeHospital.activeDoctorsCount,
-        hourOfDay: currentHour,
-        dayOfWeek: currentDay,
-        emergencyStatus: activeHospital.emergencyDepartmentStatus,
-      })
+      queueCount: activeHospital.currentQueueCount,
+      activeDoctors: activeHospital.activeDoctorsCount,
+      hourOfDay: currentHour,
+      dayOfWeek: currentDay,
+      emergencyStatus: activeHospital.emergencyDepartmentStatus,
+    })
     : null;
 
   // Active token
@@ -226,8 +226,8 @@ export const MapboxHospitalMap: React.FC<MapboxHospitalMapProps> = ({
         hosp.emergencyDepartmentStatus === 'CRITICAL_DIVERT_ONLY'
           ? '#ef4444'
           : hasIcu
-          ? '#9DC88D'
-          : '#F1B24A';
+            ? '#9DC88D'
+            : '#F1B24A';
 
       const hospEl = document.createElement('div');
       hospEl.className = 'custom-hospital-mapbox-pin';
@@ -356,11 +356,10 @@ export const MapboxHospitalMap: React.FC<MapboxHospitalMapProps> = ({
               <button
                 key={style.id}
                 onClick={() => setCurrentStyle(style.id)}
-                className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all ${
-                  currentStyle === style.id
+                className={`px-2.5 py-1 rounded-lg text-xs font-bold transition-all ${currentStyle === style.id
                     ? 'bg-[#F1B24A] text-[#164A41]'
                     : 'text-[#9DC88D] hover:text-white'
-                }`}
+                  }`}
               >
                 {style.label}
               </button>
@@ -538,16 +537,14 @@ export const MapboxHospitalMap: React.FC<MapboxHospitalMapProps> = ({
             <button
               key={hosp.id}
               onClick={() => handleSelectHospitalItem(hosp)}
-              className={`px-3.5 py-2 rounded-xl text-xs font-semibold transition-all whitespace-nowrap flex items-center gap-2 shrink-0 ${
-                isSelected
+              className={`px-3.5 py-2 rounded-xl text-xs font-semibold transition-all whitespace-nowrap flex items-center gap-2 shrink-0 ${isSelected
                   ? 'bg-[#F1B24A] text-[#164A41] shadow-md font-bold'
                   : 'bg-[#1c5248] border border-[#4D774E] text-[#9DC88D] hover:text-white hover:border-[#9DC88D]'
-              }`}
+                }`}
             >
               <span
-                className={`w-2 h-2 rounded-full ${
-                  hosp.inventory.icuBedsAvailable > 0 ? 'bg-[#9DC88D]' : 'bg-[#F1B24A]'
-                }`}
+                className={`w-2 h-2 rounded-full ${hosp.inventory.icuBedsAvailable > 0 ? 'bg-[#9DC88D]' : 'bg-[#F1B24A]'
+                  }`}
               />
               <span>{hosp.name.split(' ')[0]}</span>
               <span className="font-mono text-[11px] opacity-80">({hosp.distanceKm}km)</span>
