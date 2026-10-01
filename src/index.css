@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+@theme {
+  --color-forest: #164A41;
+  --color-forest-dark: #0e302a;
+  --color-forest-card: #1c5248;
+  --color-moss: #4D774E;
+  --color-sage: #9DC88D;
+  --color-sage-light: #d8ebd1;
+  --color-amber: #F1B24A;
+  --color-amber-hover: #e09f36;
+
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #164A41;
+  color: #FFFFFF;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, .font-display, .font-classic {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+/* Custom scrollbars matching forest theme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0e302a;
+}
+::-webkit-scrollbar-thumb {
+  background: #4D774E;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #9DC88D;
+}
+
+

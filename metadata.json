@@ -1,0 +1,6 @@
+{
+  "name": "QueueLess Bharat — AI Hospital Availability & Waiting-Time Predictor",
+  "description": "National real-time hospital resource discovery, ICU bed and ventilator availability tracker, and AI-powered waiting time predictor with live GPS location guidance.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
